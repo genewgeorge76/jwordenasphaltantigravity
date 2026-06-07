@@ -12,16 +12,37 @@ export async function POST(request: Request) {
       )
     }
 
-    // This is the junction where the lead gets routed.
-    // Currently, it securely logs the lead on the server.
-    // NEXT STEP: Integrate with Resend (Email), Twilio (SMS), or a Webhook.
-    
-    console.log('============= NEW AI SATELLITE LEAD =============')
-    console.log(`Name:    ${data.name}`)
-    console.log(`Address: ${data.address}`)
-    console.log(`Phone:   ${data.phone}`)
-    console.log(`Region:  ${data.location}`)
-    console.log('=================================================')
+    // Integrate with Twilio (SMS)
+    const accountSid = process.env.TWILIO_ACCOUNT_SID
+    const authToken = process.env.TWILIO_AUTH_TOKEN
+    const twilioNumber = process.env.TWILIO_PHONE_NUMBER
+    const destinationNumber = process.env.DESTINATION_PHONE_NUMBER
+
+    if (accountSid && authToken && twilioNumber && destinationNumber) {
+      const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
+      const messageBody = `🚨 AI SCAN LEAD 🚨\nName: ${data.name}\nAddress: ${data.address}\nPhone: ${data.phone}\nRegion: ${data.location}`
+
+      const twilioResponse = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Basic ' + Buffer.from(`${accountSid}:${authToken}`).toString('base64'),
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          To: destinationNumber,
+          From: twilioNumber,
+          Body: messageBody,
+        }),
+      })
+
+      if (!twilioResponse.ok) {
+        console.error('Twilio Error:', await twilioResponse.text())
+      } else {
+        console.log('SMS sent successfully via Twilio.')
+      }
+    } else {
+      console.warn('Twilio credentials missing in environment variables. Lead was logged but SMS was not sent.')
+    }
 
     // Simulate heavy AI processing time to sell the aesthetic on the frontend
     await new Promise(resolve => setTimeout(resolve, 2000))
