@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Phone, MapPin } from 'lucide-react'
 import GeoSchema from '@/components/GeoSchema'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: 'J. Worden & Sons Paving LLC | Instant AI Satellite Paving Estimates',
@@ -52,6 +53,7 @@ export default function RootLayout({
         </nav>
         
         {children}
+        <SpeedInsights />
         
         {/* The Massive Carbon Black Footer */}
         <footer className="footer">
