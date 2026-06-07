@@ -43,10 +43,11 @@ export default function RootLayout({
             </a>
           </div>
           <div className="nav-links">
-            <a href="/commercial-paving">Commercial</a>
-            <a href="/residential-driveways">Residential</a>
-            <a href="/sealcoating-maintenance">Sealcoating</a>
-            <a href="/asphalt-milling">Milling</a>
+            <a href="/commercial-paving" className="nav-link">Commercial</a>
+            <a href="/residential-driveways" className="nav-link">Residential</a>
+            <a href="/asphalt-milling" className="nav-link">Milling</a>
+            <a href="/sealcoating-maintenance" className="nav-link">Maintenance</a>
+            <a href="/insights" className="nav-link" style={{ color: 'var(--powerhouse-red)' }}>Insights</a>
             <a href="/#contact" className="btn-primary">Get a Quote</a>
           </div>
         </nav>
