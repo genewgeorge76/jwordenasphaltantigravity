@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import VisualProofGallery from '@/components/VisualProofGallery'
+import AIEstimationForm from '@/components/AIEstimationForm'
 
 export const metadata: Metadata = {
   title: 'Top Asphalt Paving Contractor in Henrico VA & Short Pump',
@@ -60,12 +61,7 @@ export default function HenricoPaving() {
             <div style={{ background: 'var(--carbon-black)', padding: '40px', borderRadius: '8px', borderTop: '4px solid var(--powerhouse-red)', position: 'sticky', top: '20px' }}>
               <h3 style={{ fontSize: '1.8rem', marginBottom: '20px', color: 'white', fontFamily: 'Bebas Neue' }}>Henrico AI Estimation Tool</h3>
               <p style={{ color: '#ccc', marginBottom: '20px', lineHeight: '1.6' }}>Bypass the wait. Input your Henrico, Short Pump, or Glen Allen property address and our systems will begin an orbital scan immediately.</p>
-              <form style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                <input type="text" placeholder="Your Name" style={{ padding: '15px', border: 'none', borderRadius: '4px', background: '#fff' }} />
-                <input type="text" placeholder="Henrico Property Address" style={{ padding: '15px', border: '2px solid var(--powerhouse-red)', borderRadius: '4px', fontWeight: 'bold', background: '#fff' }} />
-                <input type="tel" placeholder="Phone Number" style={{ padding: '15px', border: 'none', borderRadius: '4px', background: '#fff' }} />
-                <button type="button" className="btn-primary" style={{ width: '100%', marginTop: '10px', padding: '15px', fontSize: '1.1rem' }}>Initiate Satellite Scan</button>
-              </form>
+              <AIEstimationForm location="Henrico" />
             </div>
           </div>
         </div>
