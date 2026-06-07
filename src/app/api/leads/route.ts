@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 
     // Fire data to the secure Python Brain (JWorden AI OS)
     try {
-      const BRAIN_URL = process.env.BRAIN_URL || 'http://localhost:8000'
+      const BRAIN_URL = process.env.BRAIN_URL || 'https://jwordenoperations.onrender.com'
       const MASTER_KEY = process.env.JWORDEN_MASTER_KEY || 'dev_override_key_123'
       
       const brainResponse = await fetch(`${BRAIN_URL}/api/v1/scan`, {
