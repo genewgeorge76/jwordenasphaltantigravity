@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getSortedInsightsData } from '@/lib/insights'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://jworden-production.vercel.app'
+  const baseUrl = 'https://jwordenasphaltpaving.com'
 
   // Main Services
   const services = [
