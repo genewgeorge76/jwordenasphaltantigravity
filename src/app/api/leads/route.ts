@@ -44,8 +44,35 @@ export async function POST(request: Request) {
       console.warn('Twilio credentials missing in environment variables. Lead was logged but SMS was not sent.')
     }
 
-    // Simulate heavy AI processing time to sell the aesthetic on the frontend
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // Fire data to the secure Python Brain (JWorden AI OS)
+    try {
+      const BRAIN_URL = process.env.BRAIN_URL || 'http://localhost:8000'
+      const MASTER_KEY = process.env.JWORDEN_MASTER_KEY || 'dev_override_key_123'
+      
+      const brainResponse = await fetch(`${BRAIN_URL}/api/v1/scan`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-KEY': MASTER_KEY
+        },
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          address: data.address
+        })
+      })
+
+      if (!brainResponse.ok) {
+        console.error(`JWorden AI Brain Error: ${brainResponse.status}`)
+      } else {
+        console.log('Lead successfully ingested by JWorden AI Brain.')
+      }
+    } catch (e) {
+      console.error('Failed to connect to JWorden AI Brain:', e)
+    }
+
+    // Simulate heavy AI processing time to sell the aesthetic on the frontend (if brain is offline)
+    await new Promise(resolve => setTimeout(resolve, 1500))
 
     return NextResponse.json({ success: true, message: 'Lead routed successfully' })
 
