@@ -1,27 +1,12 @@
 import React from 'react';
+import { portfolioPhotos } from '@/lib/legacyPortfolio';
 
-const portfolioImages = [
-  {
-    url: 'https://images.unsplash.com/photo-1590495945196-85dc3c983ce6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    alt: 'Heavy Commercial Asphalt Paving Operation in Virginia',
-    caption: 'Commercial Hot Mix Asphalt (HMA) Overlay'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1621570169123-2895513ab455?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    alt: 'Laser Guided Grading and Subgrade Preparation',
-    caption: 'Subgrade Compaction & Laser Grading'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1541888054942-0f04c633a69a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    alt: 'Industrial Roller Compacting Fresh Asphalt',
-    caption: 'Vibratory Roller Compaction (95%+ Density)'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    alt: 'Freshly Striped Commercial Parking Lot',
-    caption: 'ADA Compliant Line Striping & Sealcoating'
-  }
-];
+// Use actual completed job photos from your archives
+const portfolioImages = portfolioPhotos.slice(0, 8).map((photo) => ({
+  url: photo.url,
+  alt: photo.title,
+  caption: photo.description || photo.title,
+}));
 
 export default function VisualProofGallery() {
   return (
