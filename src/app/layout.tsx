@@ -32,7 +32,7 @@ export default function RootLayout({
           </div>
           <div style={{ display: 'flex', gap: '30px' }}>
             <span style={{display: 'flex', alignItems: 'center', gap: '8px'}}><MapPin size={16} color="#d32f2f" /> CHESTER, VA</span>
-            <span style={{display: 'flex', alignItems: 'center', gap: '8px', color: '#d32f2f', fontWeight: '800'}}><Phone size={16} /> (800) 555-PAVE</span>
+            <span style={{display: 'flex', alignItems: 'center', gap: '8px', color: '#d32f2f', fontWeight: '800'}}><Phone size={16} /> (804) 446-1296</span>
           </div>
         </div>
         
@@ -44,10 +44,11 @@ export default function RootLayout({
             </a>
           </div>
           <div className="nav-links">
-            <a href="/commercial-paving">Commercial</a>
-            <a href="/residential-driveways">Residential</a>
-            <a href="/sealcoating-maintenance">Sealcoating</a>
-            <a href="/asphalt-milling">Milling</a>
+            <a href="/commercial-paving" className="nav-link">Commercial</a>
+            <a href="/residential-driveways" className="nav-link">Residential</a>
+            <a href="/asphalt-milling" className="nav-link">Milling</a>
+            <a href="/sealcoating-maintenance" className="nav-link">Maintenance</a>
+            <a href="/insights" className="nav-link" style={{ color: 'var(--powerhouse-red)' }}>Insights</a>
             <a href="/#contact" className="btn-primary">Get a Quote</a>
           </div>
         </nav>
@@ -63,6 +64,10 @@ export default function RootLayout({
               <p style={{color: '#aaa', fontSize: '1.1rem', fontWeight: '500', lineHeight: '1.8'}}>
                 We provide superior asphalt and concrete solutions for commercial and residential properties. With over four decades of operational excellence, we are the authority in pavement maintenance.
               </p>
+              <div style={{ marginTop: '15px' }}>
+                <p style={{color: '#fff', fontSize: '1rem', fontWeight: 'bold'}}><Phone size={14} style={{ display: 'inline', marginRight: '5px' }}/> (804) 446-1296</p>
+                <p style={{color: '#fff', fontSize: '1rem', fontWeight: 'bold', marginTop: '5px'}}>Email: j.wordenandsonspaving@gmail.com</p>
+              </div>
               <p style={{color: '#d32f2f', marginTop: '20px', fontWeight: '800', textTransform: 'uppercase', fontSize: '0.9rem'}}>
                 *Not affiliated with Worden Paving.
               </p>

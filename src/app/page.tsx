@@ -1,4 +1,5 @@
 import { HardHat, ShieldCheck, Cog, CheckCircle2, Trophy, Navigation } from 'lucide-react'
+import AIEstimationForm from '@/components/AIEstimationForm'
 
 export default function Home() {
   return (
@@ -127,19 +128,8 @@ export default function Home() {
           <p style={{ fontSize: '1.2rem', marginBottom: '40px', lineHeight: '1.8', fontWeight: 'bold' }}>
             Fill out the form to initiate your remote AI satellite estimate.
           </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ display: 'flex', gap: '20px' }}>
-              <input type="text" placeholder="First Name" style={{ flex: 1, padding: '20px', border: 'none', fontWeight: '600', fontSize: '1.1rem', color: '#111' }} />
-              <input type="text" placeholder="Last Name" style={{ flex: 1, padding: '20px', border: 'none', fontWeight: '600', fontSize: '1.1rem', color: '#111' }} />
-            </div>
-            <input type="text" placeholder="Property Address (For AI Satellite Scan)" style={{ padding: '20px', border: 'none', fontWeight: '600', fontSize: '1.1rem', color: '#111' }} />
-            <select style={{ padding: '20px', border: 'none', fontWeight: '600', fontSize: '1.1rem', color: '#555' }}>
-              <option>Commercial Asphalt Overlay</option>
-              <option>Residential Driveway</option>
-              <option>Sealcoating & Maintenance</option>
-              <option>Crack Filling & Striping</option>
-            </select>
-            <button type="button" className="btn-primary" style={{ background: 'var(--carbon-black)', color: 'white', marginTop: '20px', fontSize: '1.2rem', padding: '20px' }}>Initiate Satellite Scan</button>
+          <div style={{ marginTop: '20px' }}>
+            <AIEstimationForm location="Central Virginia" />
           </div>
         </div>
         <div style={{ flex: '1 1 50%', background: "url('https://images.unsplash.com/photo-1541888054942-0f04c633a69a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover" }}></div>

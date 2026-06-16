@@ -9,7 +9,7 @@ export default function GeoSchema() {
         "legalName": "J. Worden & Sons Paving LLC",
         "description": "Top-rated commercial and residential asphalt paving contractors operating in Chester, Richmond, and Chesterfield County, VA. Over 40 years of industry experience.",
         "url": "https://jwordenasphaltpaving.com",
-        "telephone": "+1-800-555-PAVE",
+        "telephone": "+1-804-446-1296",
         "areaServed": [
           { "@type": "City", "name": "Chester", "sameAs": "https://en.wikipedia.org/wiki/Chester,_Virginia" },
           { "@type": "City", "name": "Richmond", "sameAs": "https://en.wikipedia.org/wiki/Richmond,_Virginia" },
