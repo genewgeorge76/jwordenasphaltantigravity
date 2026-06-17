@@ -55,8 +55,33 @@ export default async function DynamicLocationPage({ params }: Props) {
   // Stable selection based on slug character length to avoid hydration mismatches
   const heroImage = heroes[slug.length % heroes.length]
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.jwordenasphaltpaving.com"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Local Services",
+      "item": "https://www.jwordenasphaltpaving.com"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": location.city,
+      "item": `https://www.jwordenasphaltpaving.com/${slug}`
+    }]
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <section className="subpage-hero" style={{ backgroundImage: `url('${heroImage}')` }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -100,10 +125,40 @@ export default async function DynamicLocationPage({ params }: Props) {
               )}
             </div>
 
+            {/* NEW: SEO Content Silo - Commercial Engineering */}
+            <div style={{ marginBottom: '50px' }}>
+              <h3 style={{ fontSize: '2.2rem', marginBottom: '20px', color: '#111' }}>Commercial Paving Engineering in {location.city}</h3>
+              <p style={{ fontSize: '1.15rem', color: '#444', marginBottom: '15px', lineHeight: '1.8' }}>
+                Commercial properties in {location.city} require pavement that can withstand thousands of daily vehicle movements, heavy delivery trucks, and Virginia’s brutal summer heat. J. Worden & Sons does not cut corners with residential-grade mixes on commercial lots. We utilize highly customized <strong>PG 64-22 and PG 70-22 polymer-modified asphalt binders</strong> specifically formulated to prevent rutting and deformation under heavy structural loads.
+              </p>
+              <p style={{ fontSize: '1.15rem', color: '#444', marginBottom: '15px', lineHeight: '1.8' }}>
+                Before a single drop of liquid asphalt touches your lot, our crews execute rigorous subgrade evaluations. We deploy heavy vibratory compaction rollers over deep <strong>VDOT-spec #21A crushed stone bases</strong> to ensure absolute structural stability. From complex mill-and-overlay projects for retail centers to full-depth reclamation for industrial parks, our massive fleet of laser-guided paving machines guarantees perfect water runoff and seamless transitions across {location.city}.
+              </p>
+            </div>
+
+            {/* NEW: SEO Content Silo - Residential Architecture */}
+            <div style={{ marginBottom: '50px', background: '#fafafa', padding: '30px', borderLeft: '4px solid var(--powerhouse-red)' }}>
+              <h3 style={{ fontSize: '2rem', marginBottom: '15px', color: '#111' }}>Structural Residential Driveways</h3>
+              <p style={{ fontSize: '1.15rem', color: '#555', marginBottom: '15px', lineHeight: '1.8' }}>
+                Homeowners in {location.city} often deal with "alligator cracking" and edge deterioration caused by thin, poorly compacted driveways installed by fly-by-night contractors. As a multi-generational paving firm, we approach residential driveways with the same rigorous engineering principles as our commercial highways. 
+              </p>
+              <p style={{ fontSize: '1.15rem', color: '#555', marginBottom: '0', lineHeight: '1.8' }}>
+                Every driveway we construct in {location.city} features proper excavation, aggressive base compaction, and precision-graded edges. We lay thick, dense-graded surface mixes that not only enhance the curb appeal of your estate but act as a permanent, weather-resistant barrier against water penetration and freeze-thaw cycles.
+              </p>
+            </div>
+
+            {/* Local Logistics & Permitting */}
+            <div style={{ marginBottom: '50px' }}>
+              <h3 style={{ fontSize: '1.8rem', marginBottom: '15px', color: '#111' }}>Local Logistics & Right-of-Way Operations</h3>
+              <p style={{ fontSize: '1.15rem', color: '#555', lineHeight: '1.8' }}>
+                Operating heavy equipment in {location.city} requires precise logistical coordination. Our project managers handle all aspects of right-of-way staging, traffic control, and municipal code compliance. When you partner with J. Worden & Sons, your property experiences minimal disruption, and the project is executed flawlessly from the first mill to the final line stripe.
+              </p>
+            </div>
+
             {location.climate && (
-              <div style={{ marginBottom: '40px' }}>
+              <div style={{ marginBottom: '50px' }}>
                 <h3 style={{ fontSize: '2rem', marginBottom: '20px', color: 'var(--powerhouse-red)' }}>{location.climate.title || `${location.city} Subbase Engineering`}</h3>
-                <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '20px', lineHeight: '1.8' }}>
+                <p style={{ fontSize: '1.2rem', color: '#444', marginBottom: '20px', lineHeight: '1.8' }}>
                   {location.climate.body}
                 </p>
               </div>

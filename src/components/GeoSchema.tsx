@@ -29,8 +29,10 @@ export default function GeoSchema() {
         "foundingDate": "1984-01-01",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "1601 Ware Bottom Spring Rd, Suite 214",
           "addressLocality": "Chester",
           "addressRegion": "VA",
+          "postalCode": "23836",
           "addressCountry": "US"
         }
       },

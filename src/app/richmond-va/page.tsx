@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import VisualProofGallery from '@/components/VisualProofGallery'
 import AIEstimationForm from '@/components/AIEstimationForm'
+import ServiceAreaSchema from '@/components/ServiceAreaSchema'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Top Asphalt Paving Contractor in Richmond VA | Get AI Satellite Scan',
@@ -11,9 +13,17 @@ export const metadata: Metadata = {
 export default function RichmondPaving() {
   return (
     <main>
-      <section className="subpage-hero" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1580661208967-df50eec335c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')" }}>
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
+      <ServiceAreaSchema city="Richmond" state="VA" />
+      <section className="subpage-hero" style={{ position: 'relative', overflow: 'hidden' }}>
+        <Image 
+          src="https://images.unsplash.com/photo-1580661208967-df50eec335c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+          alt="Commercial asphalt paving crew working in Richmond VA"
+          fill
+          priority
+          style={{ objectFit: 'cover', zIndex: 0 }}
+        />
+        <div className="hero-overlay" style={{ zIndex: 1, position: 'absolute', inset: 0 }}></div>
+        <div className="hero-content" style={{ zIndex: 2, position: 'relative' }}>
           <h1>Paving <span>Richmond, VA</span></h1>
           <p>Next-Generation Commercial & Residential Asphalt Engineering for the Richmond Metro Area.</p>
         </div>
