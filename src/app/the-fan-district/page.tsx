@@ -15,7 +15,7 @@ export default function FanDistrictPaving() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1>Paving <span>The Fan District</span></h1>
-          <p>Historic Paving Specialists for Richmond's Premier Urban Neighborhood.</p>
+          <p>Historic Paving Specialists for Richmond&apos;s Premier Urban Neighborhood.</p>
         </div>
       </section>
 

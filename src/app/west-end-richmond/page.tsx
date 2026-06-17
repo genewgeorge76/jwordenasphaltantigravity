@@ -15,7 +15,7 @@ export default function WestEndPaving() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1>Paving <span>The West End</span></h1>
-          <p>Architectural Estate Driveway & Commercial Paving for Richmond's West End.</p>
+          <p>Architectural Estate Driveway & Commercial Paving for Richmond&apos;s West End.</p>
         </div>
       </section>
 

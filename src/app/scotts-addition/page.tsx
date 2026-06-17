@@ -15,7 +15,7 @@ export default function ScottsAdditionPaving() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1>Paving <span>Scott's Addition</span></h1>
-          <p>Commercial Asphalt Engineering for Richmond's Fastest Growing Hub.</p>
+          <p>Commercial Asphalt Engineering for Richmond&apos;s Fastest Growing Hub.</p>
         </div>
       </section>
 

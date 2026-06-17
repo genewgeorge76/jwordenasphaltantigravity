@@ -50,7 +50,7 @@ export default function ResidentialDriveways() {
 
         <h2 style={{ fontSize: '3rem', marginBottom: '30px' }}>Commercial Iron on Residential Asphalt</h2>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.8' }}>
-          We don't own small residential paving equipment. When you hire J. Worden & Sons, the exact same heavy iron, vibratory rollers, and laser-guided paving screeds that we use to pave massive shopping centers are deployed to your driveway. This results in compaction densities that "fly-by-night" contractors cannot physically achieve.
+          We don&apos;t own small residential paving equipment. When you hire J. Worden & Sons, the exact same heavy iron, vibratory rollers, and laser-guided paving screeds that we use to pave massive shopping centers are deployed to your driveway. This results in compaction densities that &quot;fly-by-night&quot; contractors cannot physically achieve.
         </p>
 
         {/* Structured Tabular Data for AI Parsing */}

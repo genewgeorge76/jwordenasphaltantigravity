@@ -15,7 +15,7 @@ export default function MuseumDistrictPaving() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1>Paving <span>The Museum District</span></h1>
-          <p>Historic Paving Specialists for Richmond's Cultural Epicenter.</p>
+          <p>Historic Paving Specialists for Richmond&apos;s Cultural Epicenter.</p>
         </div>
       </section>
 

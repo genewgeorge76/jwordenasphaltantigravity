@@ -33,7 +33,7 @@ export default function ChesterfieldPaving() {
           <div style={{ flex: '1 1 60%' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '30px' }}>Engineered for Chesterfield County</h2>
             <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '20px', lineHeight: '1.8' }}>
-              Chesterfield County is experiencing explosive commercial and residential growth. This growth requires infrastructure built to last. When retail centers along Hull Street or Midlothian Turnpike require structural resurfacing, they don't hire lightweight contractors. They hire J. Worden & Sons.
+              Chesterfield County is experiencing explosive commercial and residential growth. This growth requires infrastructure built to last. When retail centers along Hull Street or Midlothian Turnpike require structural resurfacing, they don&apos;t hire lightweight contractors. They hire J. Worden & Sons.
             </p>
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px', margin: '40px 0' }}>

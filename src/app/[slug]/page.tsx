@@ -140,7 +140,7 @@ export default async function DynamicLocationPage({ params }: Props) {
             <div style={{ marginBottom: '50px', background: '#fafafa', padding: '30px', borderLeft: '4px solid var(--powerhouse-red)' }}>
               <h3 style={{ fontSize: '2rem', marginBottom: '15px', color: '#111' }}>Structural Residential Driveways</h3>
               <p style={{ fontSize: '1.15rem', color: '#555', marginBottom: '15px', lineHeight: '1.8' }}>
-                Homeowners in {location.city} often deal with "alligator cracking" and edge deterioration caused by thin, poorly compacted driveways installed by fly-by-night contractors. As a multi-generational paving firm, we approach residential driveways with the same rigorous engineering principles as our commercial highways. 
+                Homeowners in {location.city} often deal with &quot;alligator cracking&quot; and edge deterioration caused by thin, poorly compacted driveways installed by fly-by-night contractors. As a multi-generational paving firm, we approach residential driveways with the same rigorous engineering principles as our commercial highways. 
               </p>
               <p style={{ fontSize: '1.15rem', color: '#555', marginBottom: '0', lineHeight: '1.8' }}>
                 Every driveway we construct in {location.city} features proper excavation, aggressive base compaction, and precision-graded edges. We lay thick, dense-graded surface mixes that not only enhance the curb appeal of your estate but act as a permanent, weather-resistant barrier against water penetration and freeze-thaw cycles.

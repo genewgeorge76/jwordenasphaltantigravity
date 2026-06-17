@@ -15,7 +15,7 @@ export default function ChurchHillPaving() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1>Paving <span>Church Hill</span></h1>
-          <p>Historic Paving Specialists for Richmond's Oldest Neighborhood.</p>
+          <p>Historic Paving Specialists for Richmond&apos;s Oldest Neighborhood.</p>
         </div>
       </section>
 

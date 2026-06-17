@@ -3,7 +3,6 @@ import './globals.css'
 import { Phone, MapPin } from 'lucide-react'
 import Link from 'next/link'
 import GeoSchema from '@/components/GeoSchema'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.jwordenasphaltpaving.com'),
@@ -84,7 +83,6 @@ export default function RootLayout({
         </nav>
         
         {children}
-        <SpeedInsights />
         
         {/* The Massive Carbon Black Footer */}
         <footer className="footer">

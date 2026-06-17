@@ -15,7 +15,7 @@ export default function WindsorFarmsPaving() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1>Paving <span>Windsor Farms</span></h1>
-          <p>Architectural Estate Driveway Paving for Richmond's Premier Neighborhood.</p>
+          <p>Architectural Estate Driveway Paving for Richmond&apos;s Premier Neighborhood.</p>
         </div>
       </section>
 

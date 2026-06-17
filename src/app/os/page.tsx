@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Metadata } from 'next'
 import OrbitalMap from '@/components/os/OrbitalMap'
 
@@ -17,7 +18,7 @@ export default function CommandCenter() {
             <p style={{ color: '#888', fontFamily: 'monospace', margin: 0 }}>v2.0 // TACTICAL OPERATIONS DASHBOARD</p>
           </div>
           <div>
-            <a href="/" style={{ color: '#aaa', textDecoration: 'none', fontFamily: 'monospace', fontSize: '0.9rem', border: '1px solid #444', padding: '10px 20px', borderRadius: '4px' }}>EXIT TO PUBLIC SITE</a>
+            <Link href="/" style={{ color: '#aaa', textDecoration: 'none', fontFamily: 'monospace', fontSize: '0.9rem', border: '1px solid #444', padding: '10px 20px', borderRadius: '4px' }}>EXIT TO PUBLIC SITE</Link>
           </div>
         </header>
 

@@ -14,12 +14,13 @@ export default function VisualProofGallery() {
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <h2 style={{ fontSize: '3rem', marginBottom: '10px', color: 'var(--powerhouse-red)' }}>Visual Proof of Execution</h2>
         <p style={{ fontSize: '1.2rem', color: '#aaa', marginBottom: '40px', maxWidth: '800px' }}>
-          We don't just talk about engineering excellence; we document it. View our heavy fleet in action across commercial and residential deployments in the Virginia market.
+          We don&apos;t just talk about engineering excellence; we document it. View our heavy fleet in action across commercial and residential deployments in the Virginia market.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
           {portfolioImages.map((img, index) => (
             <div key={index} className="group" style={{ position: 'relative', height: '300px', overflow: 'hidden', borderRadius: '8px' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src={img.url} 
                 alt={img.alt} 

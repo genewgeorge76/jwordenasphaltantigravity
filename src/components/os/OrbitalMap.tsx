@@ -21,7 +21,6 @@ export default function OrbitalMap() {
 
   const [sqFt, setSqFt] = useState(0)
   const [addressInput, setAddressInput] = useState('')
-  const [error, setError] = useState('')
 
   // Derived Calculations
   const cubicYardsAsphalt = (sqFt * (ASPHALT_DEPTH_INCHES / 12)) / 27
@@ -33,17 +32,10 @@ export default function OrbitalMap() {
   const totalCost = (asphaltTons * ASPHALT_TON_PRICE) + (stoneTons * STONE_TON_PRICE)
 
   useEffect(() => {
-    // Setup Mapbox Token
-    const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || ''
-    if (!mapboxToken) {
-      setError('Missing NEXT_PUBLIC_MAPBOX_TOKEN. Please add it to your environment variables.')
-      return
-    }
-
     if (map.current) return // initialize map only once
     
+    const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || ''
     mapboxgl.accessToken = mapboxToken
-
     map.current = new mapboxgl.Map({
       container: mapContainer.current!,
       style: 'mapbox://styles/mapbox/satellite-streets-v12',
@@ -66,7 +58,7 @@ export default function OrbitalMap() {
     map.current.on('draw.delete', updateArea)
     map.current.on('draw.update', updateArea)
 
-    function updateArea(e: any) {
+    function updateArea() {
       const data = draw.current!.getAll()
       if (data.features.length > 0) {
         // Calculate area in square meters using Turf
@@ -112,9 +104,9 @@ export default function OrbitalMap() {
           <h2 style={{ fontSize: '1.8rem', fontFamily: 'Bebas Neue', letterSpacing: '1px' }}>ORBITAL ESTIMATOR</h2>
         </div>
 
-        {error && (
+        {!process.env.NEXT_PUBLIC_MAPBOX_TOKEN && (
           <div style={{ background: '#4a0000', padding: '15px', borderRadius: '4px', marginBottom: '20px', fontSize: '0.9rem', borderLeft: '4px solid #d32f2f' }}>
-            {error}
+            Missing NEXT_PUBLIC_MAPBOX_TOKEN. Please add it to your environment variables.
           </div>
         )}
 
@@ -138,12 +130,12 @@ export default function OrbitalMap() {
           </div>
 
           <div style={{ background: '#222', padding: '20px', borderRadius: '4px', marginBottom: '15px', borderLeft: '4px solid #d32f2f' }}>
-            <span style={{ display: 'block', color: '#aaa', fontSize: '0.9rem', marginBottom: '5px' }}>Hot Mix Asphalt ({ASPHALT_DEPTH_INCHES}")</span>
+            <span style={{ display: 'block', color: '#aaa', fontSize: '0.9rem', marginBottom: '5px' }}>Hot Mix Asphalt ({ASPHALT_DEPTH_INCHES}&quot;)</span>
             <span style={{ fontSize: '2rem', fontWeight: 'bold', fontFamily: 'monospace' }}>{asphaltTons.toFixed(2)} tons</span>
           </div>
 
           <div style={{ background: '#222', padding: '20px', borderRadius: '4px', marginBottom: '30px', borderLeft: '4px solid #FF9800' }}>
-            <span style={{ display: 'block', color: '#aaa', fontSize: '0.9rem', marginBottom: '5px' }}>21A Stone Base ({STONE_DEPTH_INCHES}")</span>
+            <span style={{ display: 'block', color: '#aaa', fontSize: '0.9rem', marginBottom: '5px' }}>21A Stone Base ({STONE_DEPTH_INCHES}&quot;)</span>
             <span style={{ fontSize: '2rem', fontWeight: 'bold', fontFamily: 'monospace' }}>{stoneTons.toFixed(2)} tons</span>
           </div>
 
