@@ -117,7 +117,7 @@ export default function RootLayout({
                 <li><Link href="/the-fan-district" style={{ color: '#aaa', textDecoration: 'none' }}>The Fan District</Link></li>
                 <li><Link href="/museum-district" style={{ color: '#aaa', textDecoration: 'none' }}>Museum District</Link></li>
                 <li><Link href="/church-hill" style={{ color: '#aaa', textDecoration: 'none' }}>Church Hill</Link></li>
-                <li><Link href="/scotts-addition" style={{ color: '#aaa', textDecoration: 'none' }}>Scott's Addition</Link></li>
+                <li><Link href="/scotts-addition" style={{ color: '#aaa', textDecoration: 'none' }}>Scott&apos;s Addition</Link></li>
                 <li><Link href="/windsor-farms" style={{ color: '#aaa', textDecoration: 'none' }}>Windsor Farms</Link></li>
                 <li><Link href="/west-end-richmond" style={{ color: '#aaa', textDecoration: 'none' }}>West End Richmond</Link></li>
                 <li><Link href="/stratford-hills" style={{ color: '#aaa', textDecoration: 'none' }}>Stratford Hills</Link></li>
