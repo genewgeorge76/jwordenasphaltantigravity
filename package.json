@@ -9,7 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.5.1",
+    "@turf/turf": "^7.3.5",
     "@vercel/speed-insights": "^2.0.0",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.17.0",
     "mapbox-gl": "^3.24.0",
     "next": "16.2.7",
