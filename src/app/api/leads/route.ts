@@ -46,9 +46,19 @@ export async function POST(request: Request) {
 
     // Fire data to the secure Python Brain (JWorden AI OS)
     try {
-      const BRAIN_URL = process.env.BRAIN_URL || 'https://jwordenoperations.onrender.com'
-      const MASTER_KEY = process.env.JWORDEN_MASTER_KEY || 'dev_override_key_123'
-      
+      // No fallbacks. The old defaults pointed at a hardcoded key in committed
+      // source and at jwordenoperations.onrender.com, which now answers 503
+      // "Service Suspended" — so every lead was being posted into a dead host
+      // while this route reported success to the customer.
+      const BRAIN_URL = process.env.BRAIN_URL
+      const MASTER_KEY = process.env.JWORDEN_MASTER_KEY
+      if (!BRAIN_URL || !MASTER_KEY) {
+        throw new Error(
+          'BRAIN_URL / JWORDEN_MASTER_KEY not set — skipping brain ingest. ' +
+          'The SMS above still fired, so the lead is not lost.'
+        )
+      }
+
       const brainResponse = await fetch(`${BRAIN_URL}/api/v1/scan`, {
         method: 'POST',
         headers: {
@@ -59,7 +69,8 @@ export async function POST(request: Request) {
           name: data.name,
           phone: data.phone,
           address: data.address
-        })
+        }),
+        signal: AbortSignal.timeout(15_000)
       })
 
       if (!brainResponse.ok) {
