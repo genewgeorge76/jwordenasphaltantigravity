@@ -3,7 +3,15 @@ import { getSortedInsightsData } from '@/lib/insights'
 import { LOCATIONS } from '@/lib/locations'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://jwordenasphaltpaving.com'
+  // Was hardcoded to https://jwordenasphaltpaving.com, which currently serves a
+  // parking page (server: Parking/1.0) while the registrar account is recovered.
+  // A sitemap is an instruction to Google to go index these URLs, so hardcoding
+  // a parked host means actively asking to have a parking page crawled under
+  // the brand. Env var so the deploy decides, with the www host as the default
+  // because that is where the 301 in middleware sends apex traffic anyway.
+  const baseUrl = (
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.jwordenasphaltpaving.com'
+  ).replace(/\/$/, '')
 
   // Main Services
   const services = [

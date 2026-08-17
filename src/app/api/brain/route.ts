@@ -1,37 +1,72 @@
 import { NextResponse } from 'next/server'
 
-// In production, this will be your Render server URL
-const BRAIN_URL = process.env.BRAIN_URL || 'https://jwordenoperations.onrender.com'
-const MASTER_KEY = process.env.JWORDEN_MASTER_KEY || 'dev_override_key_123'
+/**
+ * Proxy from the site to the backend "brain".
+ *
+ * Two things were wrong here.
+ *
+ * 1. The API key fell back to a hardcoded 'dev_override_key_123'. A default
+ *    credential in committed source is not a default, it is a published one:
+ *    if the backend ever accepted it, anyone reading the repo held a valid key.
+ *
+ * 2. BRAIN_URL defaulted to https://jwordenoperations.onrender.com, which now
+ *    answers 503 with <title>Service Suspended</title> — verified over three
+ *    90-second attempts, so it is suspended rather than cold-starting. Every
+ *    scan submitted by a visitor was being posted into a dead host and lost,
+ *    and the silent default is what let that go unnoticed.
+ *
+ * Both now come from the environment with no fallback, and a missing value is
+ * reported as a misconfiguration instead of being quietly papered over.
+ */
 
 export async function POST(req: Request) {
+  const brainUrl = process.env.BRAIN_URL
+  const masterKey = process.env.JWORDEN_MASTER_KEY
+
+  if (!brainUrl || !masterKey) {
+    console.error(
+      '[api/brain] BRAIN_URL and JWORDEN_MASTER_KEY must both be set. ' +
+        'Point BRAIN_URL at the live API (https://jworden-api.fly.dev); the ' +
+        'previous default, jwordenoperations.onrender.com, is suspended.',
+    )
+    return NextResponse.json(
+      { error: 'Lead intake is not configured. Please call us directly.' },
+      { status: 503 },
+    )
+  }
+
   try {
     const body = await req.json()
 
-    // Encrypted API call to the Python backend
-    const response = await fetch(`${BRAIN_URL}/api/v1/scan`, {
+    const response = await fetch(`${brainUrl}/api/v1/scan`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-KEY': MASTER_KEY
+        'X-API-KEY': masterKey,
       },
       body: JSON.stringify({
         name: body.name || 'Unknown',
         phone: body.phone || 'Unknown',
-        address: body.address || 'Unknown'
-      })
+        address: body.address || 'Unknown',
+      }),
+      // Without a timeout this hangs on the platform's own limit while a
+      // customer watches a spinner. A suspended host is exactly the case.
+      signal: AbortSignal.timeout(15_000),
     })
 
     if (!response.ok) {
-      console.error(`Brain API Error: ${response.status} ${response.statusText}`)
-      return NextResponse.json({ error: 'Connection to Brain failed' }, { status: 500 })
+      // Log the destination, not the key. The status alone does not say which
+      // backend was called, and that was the missing clue when the default
+      // silently pointed at a dead service.
+      console.error(
+        `[api/brain] ${brainUrl} returned ${response.status} ${response.statusText}`,
+      )
+      return NextResponse.json({ error: 'Connection to Brain failed' }, { status: 502 })
     }
 
-    const data = await response.json()
-    return NextResponse.json(data)
-
+    return NextResponse.json(await response.json())
   } catch (error) {
-    console.error('Error forwarding data to Python Brain:', error)
+    console.error(`[api/brain] request to ${brainUrl} failed:`, error)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }
